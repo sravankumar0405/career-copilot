@@ -46,7 +46,7 @@ const loginUser = async (req, res) => {
 
         const user = await User.findOne({
             email: email.trim().toLowerCase(),
-        })
+        }).select("+password");
 
         if(!user) {
             return res.status(401).json({
@@ -121,8 +121,9 @@ const deleteUser = async (req, res) => {
     
 }
 
+
 module.exports = {
     registerUser,
     loginUser,
-    deleteUser
+    deleteUser,
 }
