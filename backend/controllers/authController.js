@@ -67,7 +67,7 @@ const loginUser = async (req, res) => {
 
         // Create a signed JWT after successful login
         const token = jwt.sign(
-            {userId: user._id.toString()},
+            {id: user._id.toString()},
             process.env.JWT_SECRET,
             {expiresIn: process.env.JWT_EXPIRES_IN || "1h"}
         )
@@ -92,38 +92,8 @@ const loginUser = async (req, res) => {
 }
 
 
-// DELETE route to remove user in the MongoDB (database) using this business logic with the user name 
-const deleteUser = async (req, res) => {
-
-    try {
-        
-        const userName = req.params.name;
-        // Deletes the first document(user details) matching the name
-        const deletedUser = await User.deleteOne({name: userName});
-
-        if(!deletedUser) {
-            return res.status(404).json({
-                message: "User not found"
-            })
-        }
-
-        // returns Success response successfully
-        res.status(200).json({
-            success: true,
-            message: "User deleted Successfully",
-            user: deletedUser
-        })
-
-    }   catch (error) {
-        // Handle malformed ObjectIDs or database connection errors
-        res.status(500).json({ message: "Server error", error: error.message });
-    }
-    
-}
-
 
 module.exports = {
     registerUser,
     loginUser,
-    deleteUser,
 }

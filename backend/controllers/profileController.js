@@ -4,14 +4,14 @@ const User = require("../models/User");
 const getProfile = async (req, res)=> {
     
     const user = await User.findById(
-        req.user.userId
+        req.user.id
     ).select("-password");
 
     console.log(req.user);
 
     res.json({
         success: true,
-        message: "You're Authorized to access the Profile",
+        message: "You're Authorized to access the User Profile/Me page",
         user
     });
 };
