@@ -2,9 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
-const userRoutes = require("./routes/userRoutes")
+const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
-const profileRoutes = require("./routes/profileRoutes");
 
 const connectDB = require("./config/db");
 
@@ -19,8 +18,12 @@ app.use(express.json());
 
 app.use("/api/users", userRoutes)
 
-app.use("/api/auth", authRoutes);
-app.use("/api/profile", profileRoutes)
+app.use("/api/users", authRoutes);
+
+
+app.get("/", (req, res) => {
+    res.send("Backend is running");
+});
 
 
 const PORT = 5000;
