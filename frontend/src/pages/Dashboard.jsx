@@ -17,8 +17,8 @@ function Dashboard() {
     }
 
     useEffect(() => {
-        const fetchUser = async ()=> {
-            
+        const fetchUser = async () => {
+
             const data = await getMe();
             setUser(data.user);
         };
@@ -27,17 +27,24 @@ function Dashboard() {
 
     }, [logout, navigate]);
 
-    return(
-        <div>
-            <h1 className="text-3xl">
-                Welcome, {user?.name}
-            </h1>
-            <p>You have successfully logged in.</p>
+    return (
+            <div
+                className=" min-h-screen flex items-center  flex-col gap-4"
+            >
+                <h1 className="text-3xl">
+                    Welcome, {user?.name}
+                </h1>
+                <p>
+                    You have successfully logged in.
+                </p>
 
-            <button onClick={handleLogout}>
-                Logout
-            </button>
-        </div>
+                <button onClick={handleLogout}
+                    className="cursor-pointer bg-blue-600 text-white px-5 py-2 rounded-lg mt-5 hover:bg-blue-700"
+                >
+                    Logout
+                </button>
+            </div>
+
     );
 }
 

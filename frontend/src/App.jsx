@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { Route, Routes } from "react-router-dom";
+import ResumeUpload from "./pages/ResumeUpload";
 
 function App() {
   return (
@@ -18,6 +19,15 @@ function App() {
               <Dashboard />
             </ProtectedRoute>
           }
+          />
+
+          <Route 
+            path="/upload-resume"
+            element={
+              <ProtectedRoute>
+                <ResumeUpload />
+              </ProtectedRoute>
+            }
           />
       </Routes>
   );
