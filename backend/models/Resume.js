@@ -17,10 +17,18 @@ const resumeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    extractedText: {
+      type: String,
+      default: ""
+    }
+
   },
+
   {
     timestamps: true,
   }
+  
 );
 
 module.exports =

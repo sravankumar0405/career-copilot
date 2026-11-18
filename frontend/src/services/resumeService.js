@@ -5,6 +5,8 @@ const API_URL = "http://localhost:5000/api/resume";
 export const uploadResume = async (file) => {
     const token = localStorage.getItem("token");
 
+    console.log(token);
+
     const formData = new FormData();
 
     formData.append("resume", file);
@@ -16,6 +18,58 @@ export const uploadResume = async (file) => {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
+        }
+    );
+
+    return response.data;
+}
+
+
+export const getMyResumes = async () => {
+    const token = localStorage.getItem("token");
+
+    const response = await axios.get(
+        `${API_URL}/my-resumes`,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    return response.data;
+}
+
+
+export const getResumeById = async (id) => {
+
+    const token = localStorage.getItem("token");
+
+    const response = await axios.get(
+        `${API_URL}/${id}`,
+
+        {
+            headers: {
+                Authorization:
+                    `Bearer ${token}`,
+            }
+        }
+    );
+
+    return response.data;
+};
+
+
+export const deleteResume = async (id)=> {
+    const token = localStorage.getItem("token");
+
+    const response = await axios.delete(
+        `${API_URL}/${id}`,
+
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         }
     );
 

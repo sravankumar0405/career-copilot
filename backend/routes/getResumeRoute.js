@@ -4,7 +4,8 @@ const express = require("express");
 
 const { 
     getMyResumes,
-    deleteResume 
+    deleteResume, 
+    getResumeById
 } = require("../controllers/ResumeController");
 
 const protect = require("../middleware/authMiddleware")
@@ -17,6 +18,13 @@ router.get(
     protect,
     getMyResumes
 );
+
+// get route to get a resumee using user id
+router.get(
+    "/:id",
+    protect,
+    getResumeById
+)
 
 // delete route to delete particular user resume with id
 router.delete("/:id", protect, deleteResume)

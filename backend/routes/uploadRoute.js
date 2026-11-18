@@ -4,7 +4,7 @@ const { uploadResume } = require("../controllers/uploadController");
 const upload = require("../middleware/uploadMiddleware")
 const protect = require("../middleware/authMiddleware");
 
-const router = express.Router();
+const  router = express.Router();
 
 router.post(
     "/upload", 

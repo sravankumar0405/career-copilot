@@ -4,32 +4,52 @@ import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { Route, Routes } from "react-router-dom";
 import ResumeUpload from "./pages/ResumeUpload";
+import MyResumes from "./pages/MyResumes";
+import ResumeDetails from "./pages/ResumeDetails";
 
 function App() {
   return (
     <Routes>
-        {/* Public Route */}
-        <Route path="/" element={<Login />} />
+      {/* Public Route */}
+      <Route path="/" element={<Login />} />
 
-        {/* Protected Routes */}
-        <Route 
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-          />
+      {/* Protected Routes */}
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
 
-          <Route 
-            path="/upload-resume"
-            element={
-              <ProtectedRoute>
-                <ResumeUpload />
-              </ProtectedRoute>
-            }
-          />
-      </Routes>
+      <Route
+        path="/upload-resume"
+        element={
+          <ProtectedRoute>
+            <ResumeUpload />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/my-resumes"
+        element={
+          <ProtectedRoute>
+            <MyResumes />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/resume/:id"
+        element={
+          <ProtectedRoute>
+            <ResumeDetails />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
   );
 }
 

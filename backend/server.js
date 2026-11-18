@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require("path")
 
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
@@ -24,6 +25,13 @@ app.use("/api/users", userRoutes)
 app.use("/api/users", authRoutes);
 
 app.use("/api/resume", uploadRoute);
+
+app.use(
+  "/uploads",
+  express.static(
+    path.join(__dirname, "uploads")
+  )
+);
 app.use("/api/resume", getRusumeRoute);
 
 

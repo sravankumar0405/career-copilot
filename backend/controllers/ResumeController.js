@@ -1,6 +1,8 @@
 const Resume =
     require("../models/Resume");
 
+
+// Business logic for to get all user resumes
 const getMyResumes =
     async (req, res) => {
 
@@ -26,6 +28,31 @@ const getMyResumes =
         }
 
     };
+
+
+const getResumeById = async (req, res) => {
+     
+    try {
+        const resume = await Resume.findById(
+        req.params.id
+    )
+
+    res.status(200).json({
+        success: true,
+        resume
+    })
+
+    } catch (error) {
+        
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
+
+
 
 const deleteResume = async (req, res) => {
 
@@ -64,5 +91,6 @@ const deleteResume = async (req, res) => {
 
 module.exports = {
     getMyResumes,
-    deleteResume
+    deleteResume,
+    getResumeById
 }
