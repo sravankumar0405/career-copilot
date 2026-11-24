@@ -41,7 +41,11 @@ function MyResumes() {
             </button>
 
             <button className="cursor-pointer bg-blue-600 text-white px-4 py-1 rounded-md mt-5 hover:bg-blue-700">
-              <Link to={`/resume/${resume._id}`}>View Analysis</Link>
+              <Link
+                to={`/resume-analysis/${resume._id}`}
+              >
+                Analyze Resume
+              </Link>
             </button>
 
             <button

@@ -17,26 +17,22 @@ const analyzeResume = async (req, res) => {
         }
 
         const prompt = `
+            You are an ATS Resume Expert.
 
-        You are an ATS Resume Expert.
+            Analyze the following resume.
 
-        Analyze the following resume.
+            ${resume.extractedText}
 
-        Resume:
+            Return ONLY valid JSON.
 
-        ${resume.extractedText}
+            Format:
 
-        Provide:
-
-        1. ATS Score out of 100
-
-        2. Strengths
-
-        3. Weaknesses
-
-        4. Improvement Suggestions
-
-        Respond in a structured format.
+            {
+            "atsScore": 0,
+            "strengths": [],
+            "weaknesses": [],
+            "suggestions": []
+            }
 
         `;
 
@@ -101,11 +97,28 @@ const analyzeResume = async (req, res) => {
             );
 
         // Extracts the AI-generated text
-        const response = result.response.text();
+        const rawResponse =
+            result.response.text();
+
+        let analysis;
+
+        try {
+
+            analysis = JSON.parse(
+                rawResponse
+            );
+
+        } catch (error) {
+            
+            return res.status(500).json({
+                success: false,
+                message: "Failed to parse AI response"
+            })
+        }
 
         res.status(200).json({
             success: true,
-            response
+            analysis
         });
 
     } catch (error) {

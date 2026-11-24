@@ -6,6 +6,8 @@ import { Route, Routes } from "react-router-dom";
 import ResumeUpload from "./pages/ResumeUpload";
 import MyResumes from "./pages/MyResumes";
 import ResumeDetails from "./pages/ResumeDetails";
+import ResumeAnalysis from "./pages/ResumeAnalysis";
+
 
 function App() {
   return (
@@ -49,6 +51,16 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      <Route
+        path="/resume-analysis/:id"
+        element={
+          <ProtectedRoute>
+            <ResumeAnalysis />
+          </ProtectedRoute>
+        }
+      />
+
     </Routes>
   );
 }
