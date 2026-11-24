@@ -19,6 +19,8 @@ const getRusumeRoute = require("./routes/getResumeRoute");
 
 const aiRoute = require("./routes/aiRoutes");
 
+const jobMatchRoute = require("./routes/jobMatchRoute");
+
 const connectDB = require("./config/db");
 
 connectDB();
@@ -43,6 +45,9 @@ app.use(
 app.use("/api/resume", getRusumeRoute);
 
 app.use("/api/ai", aiRoute);
+
+
+app.use("/api/ai/job-match", jobMatchRoute)
 
 
 app.get("/", (req, res) => {
