@@ -1,6 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+
+dotenv.config(); 
+
+console.log(
+  "Gemini API key loaded:",
+  !!process.env.GEMINI_API_KEY
+);
+
 const path = require("path")
 
 const userRoutes = require("./routes/userRoutes");
@@ -9,9 +17,9 @@ const authRoutes = require("./routes/authRoutes");
 const uploadRoute = require("./routes/uploadRoute");
 const getRusumeRoute = require("./routes/getResumeRoute");
 
-const connectDB = require("./config/db");
+const aiRoute = require("./routes/aiRoutes");
 
-dotenv.config();
+const connectDB = require("./config/db");
 
 connectDB();
 
@@ -34,17 +42,18 @@ app.use(
 );
 app.use("/api/resume", getRusumeRoute);
 
+app.use("/api/ai", aiRoute);
+
 
 app.get("/", (req, res) => {
     res.send("Backend is running");
 
-    console.log("Server running on 5000")
 })
-
 
 const PORT = 5000;
 
 app.listen(PORT, ()=> {
     console.log(`Server Running On ${PORT}`)
 });
+
 
