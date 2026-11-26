@@ -47,7 +47,7 @@ app.use("/api/resume", getRusumeRoute);
 app.use("/api/ai", aiRoute);
 
 
-app.use("/api/ai/job-match", jobMatchRoute)
+app.use("/api/job-match", jobMatchRoute)
 
 
 app.get("/", (req, res) => {

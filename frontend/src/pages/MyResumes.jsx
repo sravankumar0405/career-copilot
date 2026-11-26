@@ -22,11 +22,11 @@ function MyResumes() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col gap-6 justify-center items-center bg-gray-100">
+    <div className="min-h-screen flex flex-col gap-6 justify-center items-center bg-gray-100 p-4">
       <h1 className="text-4xl font-semibold text-black-700">MY RESUMES</h1>
 
       {resumes.map((resume) => (
-        <div className="rounded-lg bg-white p-8 w-96" key={resume._id}>
+        <div className="max-w-6xl mx-auto rounded-lg bg-white p-8" key={resume._id}>
           <h3 className="uppercase text-md my-3">{resume.fileName}</h3>
 
           <div className="flex gap-4">
@@ -45,6 +45,15 @@ function MyResumes() {
                 to={`/resume-analysis/${resume._id}`}
               >
                 Analyze Resume
+              </Link>
+            </button>
+
+            <button className="cursor-pointer bg-blue-600 text-white px-4 py-1 rounded-md mt-5 hover:bg-blue-700">
+              <Link
+                // to={`/resume-analysis/${resume._id}`}
+                to={`/jobMatch/${resume._id}`}
+              >
+                Analyzing Match
               </Link>
             </button>
 

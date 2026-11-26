@@ -21,18 +21,28 @@ const resumeSchema = new mongoose.Schema(
     extractedText: {
       type: String,
       default: ""
-    }
+    },
+
+    aiAnalysis: {
+      type: Object,
+      default: null
+    },
+
+    jobMatchAnalysis: {
+      type: Object,
+      default: null,
+    },
 
   },
 
   {
     timestamps: true,
   }
-  
+
 );
 
 module.exports =
-mongoose.model(
-  "Resume",
-  resumeSchema
-);
+  mongoose.model(
+    "Resume",
+    resumeSchema
+  );

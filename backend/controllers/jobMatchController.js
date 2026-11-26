@@ -107,6 +107,11 @@ const matchResumeWithJD = async (req, res) => {
         const analysis =
             JSON.parse(rawResponse);
 
+        resume.jobMatchAnalysis = 
+            analysis;
+
+        await resume.save();
+
         res.status(200).json({
             success: true,
             analysis

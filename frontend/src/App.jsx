@@ -7,6 +7,7 @@ import ResumeUpload from "./pages/ResumeUpload";
 import MyResumes from "./pages/MyResumes";
 import ResumeDetails from "./pages/ResumeDetails";
 import ResumeAnalysis from "./pages/ResumeAnalysis";
+import JobMatch from "./pages/JobMatch";
 
 
 function App() {
@@ -60,6 +61,17 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      <Route 
+        path="/jobMatch/:id"
+        element={
+          <ProtectedRoute>
+            <JobMatch />
+          </ProtectedRoute>
+        }
+      />
+
+
 
     </Routes>
   );
